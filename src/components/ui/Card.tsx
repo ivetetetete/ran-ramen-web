@@ -9,8 +9,8 @@ export function Card({ className, hoverEffect = false, children, ...props }: Car
   return (
     <div
       className={cn(
-        "rounded-2xl border border-stone-200/80 bg-white p-6 shadow-sm transition-all duration-300",
-        hoverEffect && "hover:border-red-500/40 hover:shadow-md",
+        "rounded-2xl border-2 border-tinta-sumi bg-blanco-arroz p-6 shadow-manga",
+        hoverEffect && "card-refined",
         className
       )}
       {...props}

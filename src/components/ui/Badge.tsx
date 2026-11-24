@@ -12,17 +12,17 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const variants = {
-    default: "bg-stone-100 text-stone-700 border-stone-200",
-    amber: "bg-amber-100 text-amber-900 border-amber-300 font-semibold",
-    rose: "bg-red-50 text-red-700 border-red-200 font-semibold",
-    red: "bg-red-50 text-red-700 border-red-200 font-semibold",
-    outline: "border-stone-300 text-stone-600",
+    default: "bg-papel-washi text-tinta-sumi border-tinta-sumi",
+    amber: "bg-amarillo-caldo text-tinta-sumi border-tinta-sumi font-bold",
+    rose: "bg-rojo-ran text-blanco-arroz border-tinta-sumi font-bold",
+    red: "bg-rojo-ran text-blanco-arroz border-tinta-sumi font-bold",
+    outline: "bg-blanco-arroz border-tinta-sumi text-tinta-sumi",
   };
 
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider",
+        "inline-flex items-center gap-1 rounded-full border-2 px-2.5 py-0.5 font-mono text-xs font-bold uppercase tracking-wider shadow-[2px_2px_0px_#1C1917]",
         variants[variant],
         className
       )}

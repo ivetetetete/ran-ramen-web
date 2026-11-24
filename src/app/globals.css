@@ -1,21 +1,180 @@
 @import "tailwindcss";
+@config "../../tailwind.config.ts";
 
 :root {
-  --background: #faf7f2;
-  --foreground: #1c1917;
+  /* 03 · PALETA OFICIAL RAN RAMEN (Guía de Marca V1) */
+  --rojo-ran: #DC2626;
+  --naranja-fideo: #F59E0B;
+  --amarillo-caldo: #FBBF24;
+  --tinta-sumi: #1C1917;
+  --papel-washi: #FAF7F2;
+  --blanco-arroz: #FFFFFF;
+
+  --background: var(--papel-washi);
+  --foreground: var(--tinta-sumi);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+  /* Colores por nombre oficial de la guía de marca */
+  --color-rojo-ran: #DC2626;
+  --color-naranja-fideo: #F59E0B;
+  --color-amarillo-caldo: #FBBF24;
+  --color-tinta-sumi: #1C1917;
+  --color-papel-washi: #FAF7F2;
+  --color-blanco-arroz: #FFFFFF;
+
+  /* Alias semánticos cortos */
+  --color-background: var(--papel-washi);
+  --color-foreground: var(--tinta-sumi);
+
+  /* 04 · TIPOGRAFÍA OFICIAL (Letras con pegada) */
+  --font-display: var(--font-dela-gothic), sans-serif;
+  --font-heading: var(--font-dela-gothic), sans-serif;
+  --font-sans: var(--font-zen-kaku), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-zen-kaku), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, monospace;
+  --font-data: var(--font-space-mono), ui-monospace, monospace;
+
+  /* Sombras duras de manga (nunca difuminadas, desplazadas 3-4 px, sin blur) */
+  --shadow-manga-sm: 3px 3px 0px #1C1917;
+  --shadow-manga: 4px 4px 0px #1C1917;
+  --shadow-manga-lg: 6px 6px 0px #1C1917;
+  --shadow-manga-xl: 8px 8px 0px #1C1917;
+}
+
+html {
+  scroll-behavior: smooth;
+  cursor: default;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--papel-washi);
+  color: var(--tinta-sumi);
   font-family: var(--font-sans);
+  font-weight: 500;
+  cursor: default;
+}
+
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+select,
+summary,
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* 05 · ELEMENTOS GRÁFICOS: EL LENGUAJE MANGA */
+
+/* Screentone (trama de puntos manga) sobre Papel Washi */
+.bg-washi-paper {
+  background-color: #FAF7F2;
+  background-image: radial-gradient(rgba(28, 25, 23, 0.08) 1px, transparent 0);
+  background-size: 16px 16px;
+}
+
+/* Screentone manga más marcado para paneles, stickers y promos */
+.bg-screentone-yellow {
+  background-color: #FBBF24;
+  background-image: radial-gradient(rgba(28, 25, 23, 0.16) 1.5px, transparent 0);
+  background-size: 10px 10px;
+}
+
+.bg-screentone-red {
+  background-color: #DC2626;
+  background-image: radial-gradient(rgba(28, 25, 23, 0.2) 1.5px, transparent 0);
+  background-size: 10px 10px;
+}
+
+.bg-screentone-paper {
+  background-color: #FAF7F2;
+  background-image: radial-gradient(rgba(28, 25, 23, 0.13) 1.25px, transparent 0);
+  background-size: 12px 12px;
+}
+
+/* Líneas de velocidad (Speed lines manga) sutiles */
+.bg-speed-lines {
+  background-image: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(28, 25, 23, 0.045) 0deg 2deg,
+    transparent 2deg 7deg
+  );
+}
+
+/* Contorno negro siempre (2px en Tinta Sumi) + Sombra dura desplazada 3-4px sin blur */
+.manga-box {
+  border: 2px solid #1C1917;
+  box-shadow: 4px 4px 0px #1C1917;
+}
+
+.manga-box-sm {
+  border: 2px solid #1C1917;
+  box-shadow: 3px 3px 0px #1C1917;
+}
+
+.manga-box-lg {
+  border: 2px solid #1C1917;
+  box-shadow: 6px 6px 0px #1C1917;
+}
+
+/* Botones y tarjetas con interacción cómic (desplazamiento físico sin blur) */
+.card-refined {
+  border: 2px solid #1C1917;
+  box-shadow: 4px 4px 0px #1C1917;
+  transition:
+    transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.18s ease;
+}
+
+.card-refined:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #1C1917;
+}
+
+.btn-manga {
+  border: 2px solid #1C1917;
+  box-shadow: 3px 3px 0px #1C1917;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.btn-manga:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #1C1917;
+}
+
+.btn-manga:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #1C1917;
+}
+
+/* Píldora del menú con estética manga (Amarillo Caldo + Tinta Sumi) */
+.menu-header-pill {
+  background-color: #FBBF24;
+  color: #1C1917;
+  border: 2px solid #1C1917;
+}
+
+.bg-menu-parchment {
+  background-color: #FAF7F2;
+  background-image: radial-gradient(rgba(28, 25, 23, 0.08) 1px, transparent 0);
+  background-size: 16px 16px;
+}
+
+/* Banda damero / borde manga */
+.pattern-checker-terracotta {
+  background-image: conic-gradient(
+    #DC2626 90deg,
+    #FBBF24 90deg 180deg,
+    #DC2626 180deg 270deg,
+    #FBBF24 270deg
+  );
+  background-size: 24px 24px;
 }
 
 @keyframes marquee {
@@ -30,7 +189,7 @@ body {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 26s linear infinite;
+  animation: marquee 28s linear infinite;
 }
 
 .animate-marquee:hover {
@@ -38,44 +197,64 @@ body {
 }
 
 @keyframes float-gentle {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
 .animate-float {
-  animation: float-gentle 4s ease-in-out infinite;
+  animation: float-gentle 4.5s ease-in-out infinite;
 }
 
-/* --- CURSOR PERSONALIZADO: CHOPSTICKS / PALILLOS JAPONESES --- */
-@media (pointer: fine) {
-  html,
-  body {
-    cursor: url('/cursor-chopsticks.png') 3 3, url('/cursor-chopsticks.svg') 3 3, auto;
-  }
-
-  a,
-  button,
-  [role="button"],
-  input[type="submit"],
-  input[type="button"],
-  select,
-  summary,
-  .cursor-pointer,
-  a *,
-  button * {
-    cursor: url('/cursor-chopsticks-pointer.png') 3 3, url('/cursor-chopsticks-pointer.svg') 3 3, pointer !important;
-  }
-
-  /* Mantener cursor de texto estándar en inputs de escritura */
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  textarea {
-    cursor: text;
-  }
+.animate-menu-card {
+  animation: pop-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+.nav-link-underline {
+  position: relative;
+}
+
+.nav-link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #DC2626;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float,
+  .animate-menu-card {
+    animation: none !important;
+  }
+  .card-refined,
+  .btn-manga {
+    transition: none !important;
+  }
+}
